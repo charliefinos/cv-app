@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import { Form, Button, Row, Col, Card, ListGroup } from 'react-bootstrap'
 class General extends Component {
     constructor(props) {
         super(props);
@@ -16,6 +16,8 @@ class General extends Component {
         this.handleName = this.handleName.bind(this)
         this.handleEmail = this.handleEmail.bind(this)
         this.handlePhone = this.handlePhone.bind(this)
+        this.handleGit = this.handleGit.bind(this)
+        this.handleLinkedin = this.handleLinkedin.bind(this)
         this.toggleFormView = this.toggleFormView.bind(this)
     }
 
@@ -37,6 +39,18 @@ class General extends Component {
         })
     }
 
+    handleGit(e) {
+        this.setState({
+            github: e.target.value
+        })
+    }
+
+    handleLinkedin(e) {
+        this.setState({
+            linkedin: e.target.value
+        })
+    }
+
     toggleFormView(e) {
         this.setState({
             formView: !this.state.formView
@@ -47,56 +61,90 @@ class General extends Component {
         {
             if (this.state.formView === true) {
                 return (
-                    <div className="col-6 mx-auto mt-5">
-                        <form >
+                    <Row>
+                        <Col md={4}>
+                            <h2>Personal Information</h2>
+                            <Form >
 
-                            <div className="form-group">
-                                <label >Name</label>
-                                <input
-                                    type="text"
-                                    value={this.state.name}
-                                    onChange={this.handleName}>
-                                </input>
-                            </div>
+                                <Form.Group className="form-group">
+                                    <Form.Label >Name</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        value={this.state.name}
+                                        onChange={this.handleName}>
+                                    </Form.Control>
+                                    <Form.Text>Enter Name</Form.Text>
+                                </Form.Group>
 
-                            <div className="form-group">
-                                <label >Email</label>
-                                <input
-                                    type="text"
-                                    value={this.state.email}
-                                    onChange={this.handleEmail}>
-                                </input>
-                            </div>
+                                <Form.Group className="form-group">
+                                    <Form.Label >Email</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        value={this.state.email}
+                                        onChange={this.handleEmail}>
+                                    </Form.Control>
+                                </Form.Group>
 
-                            <div className="form-group">
-                                <label >Phone</label>
-                                <input
-                                    type="text"
-                                    value={this.state.phone}
-                                    onChange={this.handlePhone}>
-                                </input>
-                            </div>
+                                <Form.Group className="form-group">
+                                    <Form.Label >Phone</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        value={this.state.phone}
+                                        onChange={this.handlePhone}>
+                                    </Form.Control>
+                                </Form.Group>
 
-                            <div className="form-group">
-                                <button
-                                    onClick={this.toggleFormView}
-                                    type="submit"
-                                    className="btn btn-primary"
-                                >Save
-                                </button>
-                            </div>
-                        </form>
-                    </div>
+                                <Form.Group className="form-group">
+                                    <Form.Label >Github</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        value={this.state.github}
+                                        onChange={this.handleGit}>
+                                    </Form.Control>
+                                </Form.Group>
+
+                                <Form.Group className="form-group">
+                                    <Form.Label >Phone</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        value={this.state.linkedin}
+                                        onChange={this.handleLinkedin}>
+                                    </Form.Control>
+                                </Form.Group>
+
+                                <Form.Group className="form-group">
+                                    <Button
+                                        onClick={this.toggleFormView}
+                                        type="submit"
+                                        variant="primary"
+                                    >Save
+                                </Button>
+                                </Form.Group>
+                            </Form>
+                        </Col>
+                    </Row>
                 )
             } else {
                 return (
-                    <div className="container-fluid">
-                        <h2>{this.state.name}</h2>
-                        <h2>{this.state.email}</h2>
-                        <h2>{this.state.phone}</h2>
-                        <a href={this.state.github}>{this.state.github}</a>
-                        <button className='btn btn-primary' onClick={this.toggleFormView}>Edit</button>
-                    </div>
+                    <Row>
+                        <Col md={6}>
+                            <Card border="primary">
+                                <Card.Header><h3>Personal Information</h3> </Card.Header>
+                                <ListGroup variant="flush">
+                                    <ListGroup.Item>
+                                        <p>Name: {this.state.name}</p>
+                                        <p>Email: {this.state.email}</p>
+                                        <p>Phone: {this.state.phone}</p>
+                                        <p>Github: <a href={this.state.github}>{this.state.github}</a></p>
+                                        <p>Linkedin: <a href={this.state.linkedin}>{this.state.linkedin}</a></p>
+                                    </ListGroup.Item>
+                                    <ListGroup.Item>
+                                        <button className='btn btn-primary' onClick={this.toggleFormView}>Edit</button>
+                                    </ListGroup.Item>
+                                </ListGroup>
+                            </Card>
+                        </Col>
+                    </Row >
                 )
             }
         }

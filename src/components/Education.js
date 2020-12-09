@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Form, Button, Row, Col, Container, Card, ListGroup } from 'react-bootstrap'
 
 class Education extends Component {
     constructor(props) {
@@ -51,68 +52,80 @@ class Education extends Component {
     render() {
         if (this.state.formView === false) {
             return (
-                <div className="container">
-                    <div>
-                        <h3>School: {this.state.school}</h3>
-                        <h3>Title: {this.state.title}</h3>
-                        <h3>Initial Year: {this.state.initialYear}</h3>
-                        <h3>Final Year: {this.state.finalYear}</h3>
-                    </div>
-                    <div>
-                        <button
-                            type="btn btn-primary"
-                            onClick={this.toggleFormView}
-                        >Edit</button>
-                    </div>
-                </div>
+                <Row>
+                    <Col md={6}>
+                        <Card border="primary">
+                            <Card.Header><h3>Education</h3></Card.Header>
+                            <ListGroup className="text-left">
+                                <ListGroup.Item>
+                                    <p>School: {this.state.school}</p>
+                                    <p>Title: {this.state.title}</p>
+                                    <p>Initial Year: {this.state.initialYear}</p>
+                                    <p>Final Year: {this.state.finalYear}</p>
+                                </ListGroup.Item>
+                                <ListGroup.Item>
+                                    <Button
+                                        variant="primary"
+                                        type="btn btn-primary"
+                                        onClick={this.toggleFormView}
+                                    >Edit</Button>
+                                </ListGroup.Item>
+                            </ListGroup>
+                        </Card>
+                    </Col>
+                </Row>
             )
         } else {
             return (
-                <div>
-                    <form>
-                        <div>
-                            <label>School</label>
-                            <input
-                                type="text"
-                                value={this.state.school}
-                                onChange={this.handleSchool}>
-                            </input>
-                        </div>
+                <Row>
+                    <Col md={4}>
+                        <Form>
+                            <Form.Group className="form-group">
+                                <Form.Label>School</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    value={this.state.school}
+                                    onChange={this.handleSchool}>
+                                </Form.Control>
+                            </Form.Group>
 
-                        <div>
-                            <label>Title</label>
-                            <input
-                                type="text"
-                                value={this.state.title}
-                                onChange={this.handleTitle}>
-                            </input>
-                        </div>
+                            <Form.Group className="form-group">
+                                <Form.Label>Title</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    value={this.state.title}
+                                    onChange={this.handleTitle}>
+                                </Form.Control>
+                            </Form.Group>
 
-                        <div>
-                            <label>School</label>
-                            <input
-                                type="text"
-                                value={this.state.initialYear}
-                                onChange={this.handleInitialYear}>
-                            </input>
-                        </div>
+                            <Form.Group className="form-group">
+                                <Form.Label>Initial Year</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    value={this.state.initialYear}
+                                    onChange={this.handleInitialYear}>
+                                </Form.Control>
+                            </Form.Group>
 
-                        <div>
-                            <label>School</label>
-                            <input
-                                type="text"
-                                value={this.state.finalYear}
-                                onChange={this.handleFinalYear}>
-                            </input>
-                        </div>
+                            <Form.Group className="form-group">
+                                <Form.Label>Final Year</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    value={this.state.finalYear}
+                                    onChange={this.handleFinalYear}>
+                                </Form.Control>
+                            </Form.Group>
 
-                        <div>
-                            <button
-                                onClick={this.toggleFormView}
-                            >Save</button>
-                        </div>
-                    </form>
-                </div>
+                            <Form.Group>
+                                <Button
+                                    type="submit"
+                                    variant="primary"
+                                    onClick={this.toggleFormView}
+                                >Save</Button>
+                            </Form.Group>
+                        </Form>
+                    </Col>
+                </Row>
             )
         }
     }
