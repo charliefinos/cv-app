@@ -1,53 +1,53 @@
 import React, { Component } from 'react'
 import { Form, Button, Row, Col, Card, ListGroup } from 'react-bootstrap'
-class General extends Component {
+
+class Experience extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            name: "John Doe",
-            phone: "222-555-111",
-            email: "john@doe.com",
-            github: "https://github.com/johndoe",
-            linkedin: "https://www.linkedin.com/in/johndoe",
-            formView: false,
+            companyName: 'El Maestro',
+            positionTitle: 'Customer Service',
+            mainTask: 'Front Desk',
+            from: '',
+            to: ''
         };
 
-        this.handleName = this.handleName.bind(this)
-        this.handleEmail = this.handleEmail.bind(this)
-        this.handlePhone = this.handlePhone.bind(this)
-        this.handleGit = this.handleGit.bind(this)
-        this.handleLinkedin = this.handleLinkedin.bind(this)
+        this.handleCompanyName = this.handleCompanyName.bind(this)
+        this.handlePosition = this.handlePosition.bind(this)
+        this.handleTask = this.handleTask.bind(this)
+        this.handleFrom = this.handleFrom.bind(this)
+        this.handleTo = this.handleTo.bind(this)
         this.toggleFormView = this.toggleFormView.bind(this)
     }
 
-    handleName(e) {
+    handleCompanyName(e) {
         this.setState({
-            name: e.target.value,
+            companyName: e.target.value,
         })
     }
 
-    handleEmail(e) {
+    handlePosition(e) {
         this.setState({
-            email: e.target.value
+            positionTitle: e.target.value
         })
     }
 
-    handlePhone(e) {
+    handleTask(e) {
         this.setState({
-            phone: e.target.value
+            mainTask: e.target.value
         })
     }
 
-    handleGit(e) {
+    handleFrom(e) {
         this.setState({
-            github: e.target.value
+            from: e.target.value
         })
     }
 
-    handleLinkedin(e) {
+    handleTo(e) {
         this.setState({
-            linkedin: e.target.value
+            to: e.target.value
         })
     }
 
@@ -63,52 +63,52 @@ class General extends Component {
                 return (
                     <Row>
                         <Col md={4}>
-                            <h2>Personal Information</h2>
+                            <h2>Practial Experience</h2>
                             <Form >
 
                                 <Form.Group className="form-group">
-                                    <Form.Label >Name</Form.Label>
+                                    <Form.Label >Company Name</Form.Label>
                                     <Form.Control
                                         type="text"
-                                        value={this.state.name}
-                                        onChange={this.handleName}>
+                                        value={this.state.companyName}
+                                        onChange={this.handleCompanyName}>
                                     </Form.Control>
                                     <Form.Text>Enter Name</Form.Text>
                                 </Form.Group>
 
                                 <Form.Group className="form-group">
-                                    <Form.Label >Email</Form.Label>
+                                    <Form.Label >Position Title</Form.Label>
                                     <Form.Control
                                         type="text"
-                                        value={this.state.email}
-                                        onChange={this.handleEmail}>
+                                        value={this.state.positionTitle}
+                                        onChange={this.handlePosition}>
                                     </Form.Control>
                                 </Form.Group>
 
                                 <Form.Group className="form-group">
-                                    <Form.Label >Phone</Form.Label>
+                                    <Form.Label >Main Tasks</Form.Label>
                                     <Form.Control
                                         type="text"
-                                        value={this.state.phone}
-                                        onChange={this.handlePhone}>
+                                        value={this.state.mainTask}
+                                        onChange={this.handleTask}>
                                     </Form.Control>
                                 </Form.Group>
 
                                 <Form.Group className="form-group">
-                                    <Form.Label >Github</Form.Label>
+                                    <Form.Label >From:</Form.Label>
                                     <Form.Control
                                         type="text"
-                                        value={this.state.github}
-                                        onChange={this.handleGit}>
+                                        value={this.state.from}
+                                        onChange={this.handleFrom}>
                                     </Form.Control>
                                 </Form.Group>
 
                                 <Form.Group className="form-group">
-                                    <Form.Label >Phone</Form.Label>
+                                    <Form.Label >To</Form.Label>
                                     <Form.Control
                                         type="text"
-                                        value={this.state.linkedin}
-                                        onChange={this.handleLinkedin}>
+                                        value={this.state.to}
+                                        onChange={this.handleTo}>
                                     </Form.Control>
                                 </Form.Group>
 
@@ -132,11 +132,11 @@ class General extends Component {
                                 <Card.Header><h3>Personal Information</h3> </Card.Header>
                                 <ListGroup variant="flush">
                                     <ListGroup.Item>
-                                        <p>Name: {this.state.name}</p>
-                                        <p>Email: {this.state.email}</p>
-                                        <p>Phone: {this.state.phone}</p>
-                                        <p>Github: <a href={this.state.github}>{this.state.github}</a></p>
-                                        <p>Linkedin: <a href={this.state.linkedin}>{this.state.linkedin}</a></p>
+                                        <p>Company Name: {this.state.companyName}</p>
+                                        <p>Position Title: {this.state.positionTitle}</p>
+                                        <p>Main Tasks: {this.state.mainTask}</p>
+                                        <p>From: {this.state.from}</p>
+                                        <p>To: {this.state.to}</p>
                                     </ListGroup.Item>
                                     <ListGroup.Item>
                                         <button className='btn btn-primary' onClick={this.toggleFormView}>Edit</button>
@@ -151,4 +151,4 @@ class General extends Component {
     }
 }
 
-export default General
+export default Experience
