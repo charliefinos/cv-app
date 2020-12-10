@@ -129,7 +129,7 @@ class Experience extends Component {
                     <Row>
                         <Col md={6}>
                             <Card border="primary">
-                                <Card.Header><h3>Personal Information</h3> </Card.Header>
+                                <Card.Header><h3>Practical experience</h3> </Card.Header>
                                 <ListGroup variant="flush">
                                     <ListGroup.Item>
                                         <p>Company Name: {this.state.companyName}</p>
