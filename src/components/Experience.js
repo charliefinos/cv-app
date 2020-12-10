@@ -1,154 +1,136 @@
-import React, { Component } from 'react'
+import React, { useState, setState } from 'react'
 import { Form, Button, Row, Col, Card, ListGroup } from 'react-bootstrap'
 
-class Experience extends Component {
-    constructor(props) {
-        super(props);
+const Experience = (props) => {
 
-        this.state = {
-            companyName: 'El Maestro',
-            positionTitle: 'Customer Service',
-            mainTask: 'Front Desk',
-            from: '',
-            to: ''
-        };
+    const [state, setState] = useState({
+        companyName: 'El Maestro',
+        positionTitle: 'Customer Service',
+        mainTask: 'Front Desk',
+        from: '',
+        to: '',
+        formView: false,
+    });
 
-        this.handleCompanyName = this.handleCompanyName.bind(this)
-        this.handlePosition = this.handlePosition.bind(this)
-        this.handleTask = this.handleTask.bind(this)
-        this.handleFrom = this.handleFrom.bind(this)
-        this.handleTo = this.handleTo.bind(this)
-        this.toggleFormView = this.toggleFormView.bind(this)
-    }
 
-    handleCompanyName(e) {
-        this.setState({
-            companyName: e.target.value,
+
+    const submitHandler = (e) => {
+        e.preventDefault()
+        setState({
+            ...state,
+            formView: !state.formView
         })
     }
 
-    handlePosition(e) {
-        this.setState({
-            positionTitle: e.target.value
+    const toggleFormView = (e) => {
+        setState({
+            ...state,
+            formView: !state.formView
         })
     }
 
-    handleTask(e) {
-        this.setState({
-            mainTask: e.target.value
-        })
-    }
 
-    handleFrom(e) {
-        this.setState({
-            from: e.target.value
-        })
-    }
+    return (
+        <div>
+            {state.formView ? (
+                <Row>
+                    <Col md={4}>
+                        <h2>Practial Experience</h2>
+                        <Form onSubmit={submitHandler}>
+                            <Form.Group className="form-group">
+                                <Form.Label >Company Name</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    value={state.companyName}
+                                    onChange={(e) => setState({
+                                        ...state,
+                                        companyName: e.target.value
+                                    })}>
+                                </Form.Control>
+                            </Form.Group>
 
-    handleTo(e) {
-        this.setState({
-            to: e.target.value
-        })
-    }
+                            <Form.Group className="form-group">
+                                <Form.Label >Position Title</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    value={state.positionTitle}
+                                    onChange={(e) => setState({
+                                        ...state,
+                                        positionTitle: e.target.value
+                                    })}>
+                                </Form.Control>
+                            </Form.Group>
 
-    toggleFormView(e) {
-        this.setState({
-            formView: !this.state.formView
-        })
-    }
+                            <Form.Group className="form-group">
+                                <Form.Label >Main Tasks</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    value={state.mainTask}
+                                    onChange={(e) => setState({
+                                        ...state,
+                                        mainTask: e.target.value
+                                    })}>
+                                </Form.Control>
+                            </Form.Group>
 
-    render() {
-        {
-            if (this.state.formView === true) {
-                return (
-                    <Row>
-                        <Col md={4}>
-                            <h2>Practial Experience</h2>
-                            <Form >
+                            <Form.Group className="form-group">
+                                <Form.Label >From:</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    value={state.from}
+                                    onChange={(e) => setState({
+                                        ...state,
+                                        from: e.target.value
+                                    })}>
+                                </Form.Control>
+                            </Form.Group>
 
-                                <Form.Group className="form-group">
-                                    <Form.Label >Company Name</Form.Label>
-                                    <Form.Control
-                                        type="text"
-                                        value={this.state.companyName}
-                                        onChange={this.handleCompanyName}>
-                                    </Form.Control>
-                                    <Form.Text>Enter Name</Form.Text>
-                                </Form.Group>
+                            <Form.Group className="form-group">
+                                <Form.Label >To</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    value={state.to}
+                                    onChange={(e) => setState({
+                                        ...state,
+                                        to: e.target.value
+                                    })}>
+                                </Form.Control>
+                            </Form.Group>
 
-                                <Form.Group className="form-group">
-                                    <Form.Label >Position Title</Form.Label>
-                                    <Form.Control
-                                        type="text"
-                                        value={this.state.positionTitle}
-                                        onChange={this.handlePosition}>
-                                    </Form.Control>
-                                </Form.Group>
-
-                                <Form.Group className="form-group">
-                                    <Form.Label >Main Tasks</Form.Label>
-                                    <Form.Control
-                                        type="text"
-                                        value={this.state.mainTask}
-                                        onChange={this.handleTask}>
-                                    </Form.Control>
-                                </Form.Group>
-
-                                <Form.Group className="form-group">
-                                    <Form.Label >From:</Form.Label>
-                                    <Form.Control
-                                        type="text"
-                                        value={this.state.from}
-                                        onChange={this.handleFrom}>
-                                    </Form.Control>
-                                </Form.Group>
-
-                                <Form.Group className="form-group">
-                                    <Form.Label >To</Form.Label>
-                                    <Form.Control
-                                        type="text"
-                                        value={this.state.to}
-                                        onChange={this.handleTo}>
-                                    </Form.Control>
-                                </Form.Group>
-
-                                <Form.Group className="form-group">
-                                    <Button
-                                        onClick={this.toggleFormView}
-                                        type="submit"
-                                        variant="primary"
-                                    >Save
+                            <Form.Group className="form-group">
+                                <Button
+                                    onClick={toggleFormView}
+                                    type="submit"
+                                    variant="primary"
+                                >Save
                                 </Button>
-                                </Form.Group>
-                            </Form>
-                        </Col>
-                    </Row>
-                )
-            } else {
-                return (
+                            </Form.Group>
+                        </Form>
+                    </Col>
+                </Row>
+            ) : (
                     <Row>
                         <Col md={6}>
                             <Card border="primary">
                                 <Card.Header><h3>Practical experience</h3> </Card.Header>
                                 <ListGroup variant="flush">
                                     <ListGroup.Item>
-                                        <p>Company Name: {this.state.companyName}</p>
-                                        <p>Position Title: {this.state.positionTitle}</p>
-                                        <p>Main Tasks: {this.state.mainTask}</p>
-                                        <p>From: {this.state.from}</p>
-                                        <p>To: {this.state.to}</p>
+                                        <p>Company Name: {state.companyName}</p>
+                                        <p>Position Title: {state.positionTitle}</p>
+                                        <p>Main Tasks: {state.mainTask}</p>
+                                        <p>From: {state.from}</p>
+                                        <p>To: {state.to}</p>
                                     </ListGroup.Item>
                                     <ListGroup.Item>
-                                        <button className='btn btn-primary' onClick={this.toggleFormView}>Edit</button>
+                                        <button className='btn btn-primary' onClick={toggleFormView}>Edit</button>
                                     </ListGroup.Item>
                                 </ListGroup>
                             </Card>
                         </Col>
-                    </Row>
-                )
-            }
-        }
-    }
+                    </Row>)}
+        </div>
+    )
+
 }
 
 export default Experience

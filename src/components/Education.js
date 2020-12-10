@@ -2,6 +2,7 @@ import React, { setState, useState } from 'react'
 import { Form, Button, Row, Col, Container, Card, ListGroup } from 'react-bootstrap'
 
 const Education = (props) => {
+
     const [state, setState] = useState({
         school: 'CEP n.7',
         title: 'Natural Science',
