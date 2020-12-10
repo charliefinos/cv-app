@@ -1,4 +1,4 @@
-import React, { useState, setState } from 'react'
+import React, { useState } from 'react'
 import { Form, Button, Row, Col, Card, ListGroup } from 'react-bootstrap'
 
 const Experience = (props) => {
@@ -11,8 +11,6 @@ const Experience = (props) => {
         to: '',
         formView: false,
     });
-
-
 
     const submitHandler = (e) => {
         e.preventDefault()
@@ -28,7 +26,6 @@ const Experience = (props) => {
             formView: !state.formView
         })
     }
-
 
     return (
         <div>
@@ -103,7 +100,7 @@ const Experience = (props) => {
                                     type="submit"
                                     variant="primary"
                                 >Save
-                                </Button>
+                            </Button>
                             </Form.Group>
                         </Form>
                     </Col>

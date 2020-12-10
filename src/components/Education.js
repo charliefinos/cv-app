@@ -1,5 +1,5 @@
-import React, { setState, useState } from 'react'
-import { Form, Button, Row, Col, Container, Card, ListGroup } from 'react-bootstrap'
+import React, { useState } from 'react'
+import { Form, Button, Row, Col, Card, ListGroup } from 'react-bootstrap'
 
 const Education = (props) => {
 
