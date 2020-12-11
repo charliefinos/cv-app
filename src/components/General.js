@@ -104,8 +104,8 @@ const General = (props) => {
                 </Row>
             ) : (
                     <Row>
-                        <Col md={6}>
-                            <Card border="primary">
+                        <Col className='mx-4 py-3 justify-content-center' xs={4} md={6}>
+                            <Card className="align-middle" border="primary">
                                 <Card.Header><h3>Personal Information</h3> </Card.Header>
                                 <ListGroup variant="flush">
                                     <ListGroup.Item>

@@ -5,7 +5,7 @@ import { Card } from 'react-bootstrap'
 function App() {
   return (
     <div className="App">
-      <Card border="primary">
+      <Card className="px-3" border="primary">
         <Card.Header><h1>CV - Application</h1></Card.Header>
         <General />
         <Education />

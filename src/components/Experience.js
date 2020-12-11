@@ -107,7 +107,7 @@ const Experience = (props) => {
                 </Row>
             ) : (
                     <Row>
-                        <Col md={6}>
+                        <Col className='mx-4 py-3' xs={4} md={6}>
                             <Card border="primary">
                                 <Card.Header><h3>Practical experience</h3> </Card.Header>
                                 <ListGroup variant="flush">
